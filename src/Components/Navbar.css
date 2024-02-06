@@ -8,20 +8,24 @@
     display: flex;
     list-style-type: none;
     padding: 0;
+    
 }
 
 .nav-item {
+    
     margin-right: 1em;
 }
 
 .nav-link {
     color: #eb1b24;
-    padding: 0.5em 1em;
+    padding: 0.5em 2em;
+    
     border-radius: 0.5em;
-    transition: background-color 0.3s ease;
+    
 }
 
-.nav-link:hover {
-    background-color: #01c7ad;
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgb(247, 179, 179);
 }
 
