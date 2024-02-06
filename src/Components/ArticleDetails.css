@@ -1,0 +1,76 @@
+.article-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.vote-button:hover {
+  background-color: #ddd;
+  color: #333; 
+  cursor: pointer;
+}
+
+.comments-container{
+  border: 1px solid #ccc;
+  border-radius: 1.5em;
+  padding: 1em;
+  margin-top: 4vh;
+}
+
+.comment-list-wrapper {
+  border-bottom: 1px solid #ccc;
+  padding: 1em 0;
+}
+
+
+
+.vote-button{
+  background-color:#01d1a4;
+  color: #fff;
+}
+
+.article-card .vote-button{
+  background-color: #afb1b3;
+  
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  margin-top: 2vh;
+  margin-left: 2vw;
+}
+
+.comment-form-container {
+  margin-top: 2vh
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-form textarea {
+
+  background-color: #ddfaf1;
+  color: black;
+  width: 65vw;
+  height: 15vh;
+  margin-bottom: 10px;
+}
+
+.comment-form button {
+  padding: 0.5em 1em;
+  background-color: #01d1a4;
+  color: #fff;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #018669;
+}
+
+

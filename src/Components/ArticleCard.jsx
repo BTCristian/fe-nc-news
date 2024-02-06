@@ -14,10 +14,7 @@ export default function ArticleCard({ article }) {
 
       <p>Author: {article.author}</p>
       <p>Published: {new Date(article.created_at).toLocaleDateString()}</p>
-      <button className="vote-button">Vote ({article.votes})</button>
-      <button className="show-comments-button">
-        Show Comments ({article.comment_count})
-      </button>
+      <p>Comments: {article.comment_count}</p>
     </div>
   );
 }
