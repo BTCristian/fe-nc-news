@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "./api";
+import { getArticleById, voteArticle } from "./api";
+
 import ArticleCard from "./ArticleCard";
 import CommentList from "./CommentList";
 import "./ArticleDetails.css";
@@ -26,6 +27,17 @@ export default function ArticleDetails() {
       });
   }, [article_id]);
 
+  const handleVote = (vote) => {
+    voteArticle(article_id, vote)
+      .then((updatedArticle) => {
+        setArticle(updatedArticle);
+      })
+      .catch((err) => {
+        console.error("Error voting on article: ", err);
+        throw err;
+      });
+  };
+
   if (!article) {
     return <div>Loading...</div>;
   }
@@ -43,7 +55,16 @@ export default function ArticleDetails() {
       {article && (
         <>
           <ArticleCard article={article} />
-          <button className="vote-button">👍 Vote ({article.votes})</button>
+          <div className="vote-buttons">
+            <button className="vote-button" onClick={() => handleVote(1)}>
+              👍
+            </button>
+            <button className="vote-button" onClick={() => handleVote(-1)}>
+              👎
+            </button>
+          </div>
+
+          <span>Votes ({article.votes})</span>
           <div className="comment-form-container">
             <form className="comment-form">
               <textarea placeholder="What are your thoughts..."></textarea>

@@ -1,4 +1,5 @@
 .article-list {
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

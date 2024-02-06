@@ -38,3 +38,15 @@ export const getCommentsByArticleId = (article_id) => {
       throw err;
     });
 };
+
+export const voteArticle = (article_id, vote) => {
+  return ncNewsApi
+    .patch(`/api/articles/${article_id}`, { inc_votes: vote })
+    .then((res) => {
+      return res.data.article;
+    })
+    .catch((err) => {
+      console.error("Error voting on article: ", err);
+      throw err;
+    });
+};
