@@ -1,0 +1,43 @@
+.article-card {
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    padding: 2vh;
+    width: 50em;
+    margin: 1em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+}
+
+.article-image {
+    max-width:  100%;
+    border-radius: 1em;
+}
+
+.article-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em
+}
+
+.article-card p {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+.article-card .vote-button,
+.article-card .show-comments-button {
+  background-color: #afb1b3;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.vote-button:hover,
+.show-comments-button:hover {
+  background-color: #ddd;
+  color: #333; 
+  cursor: pointer;
+}
+
