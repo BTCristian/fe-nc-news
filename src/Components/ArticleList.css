@@ -1,0 +1,11 @@
+.article-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vw;
+    padding: 2vh;
+}
+
+ul {
+    list-style-type: none;
+}
