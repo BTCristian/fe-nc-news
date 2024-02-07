@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, voteArticle } from "./api";
-
 import ArticleCard from "./ArticleCard";
 import CommentList from "./CommentList";
 import "./ArticleDetails.css";
@@ -11,6 +10,7 @@ export default function ArticleDetails() {
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [voteError, setVoteError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,14 +28,19 @@ export default function ArticleDetails() {
   }, [article_id]);
 
   const handleVote = (vote) => {
-    voteArticle(article_id, vote)
-      .then((updatedArticle) => {
-        setArticle(updatedArticle);
-      })
-      .catch((err) => {
-        console.error("Error voting on article: ", err);
-        throw err;
-      });
+    setArticle((currentArticle) => ({
+      ...currentArticle,
+      votes: currentArticle.votes + vote,
+    }));
+    setVoteError(null);
+    voteArticle(article_id, vote).catch((err) => {
+      console.error("Error voting on article: ", err);
+      setArticle((currentArticle) => ({
+        ...currentArticle,
+        votes: currentArticle - vote,
+      }));
+      setVoteError("Something went wrong with voting, please try again");
+    });
   };
 
   if (!article) {
