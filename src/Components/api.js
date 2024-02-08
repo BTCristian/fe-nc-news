@@ -62,3 +62,14 @@ export const postComment = (article_id, username, comment) => {
       throw err;
     });
 };
+
+export const deleteComment = (commentId) => {
+  return ncNewsApi
+    .delete(`/api/comments/${commentId}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.error("Error deleting comment: ", err);
+    });
+};
