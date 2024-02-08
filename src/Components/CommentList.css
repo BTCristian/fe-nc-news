@@ -1,11 +1,32 @@
 .comment-list {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .comment-item {
-    border: 1px solid #ccc;
-    border-radius: 0.5em;
-    margin-bottom: 1em;
-    padding: 1em;
+  border: 0.5px solid #ebe9e9;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  padding: 1em;
+  box-shadow: 3px 3px 5px #55cab7d5;
+  background-color: whitesmoke;
 }
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.comment-date {
+  color: #777;
+}
+
+.comment-body {
+  margin-bottom: 1em;
+}
+

@@ -37,14 +37,11 @@ export default function ArticleList() {
       <ul>
         {articles.map((article) => {
           return (
-            <Link
-              to={`/articles/${article.article_id}`}
-              key={article.article_id}
-            >
-              <li key={article.article_id}>
+            <li key={article.article_id}>
+              <Link to={`/articles/${article.article_id}`}>
                 <ArticleCard article={article} />
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>

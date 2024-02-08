@@ -50,3 +50,15 @@ export const voteArticle = (article_id, vote) => {
       throw err;
     });
 };
+
+export const postComment = (article_id, username, comment) => {
+  return ncNewsApi
+    .post(`/api/articles/${article_id}/comments`, { username, body: comment })
+    .then((res) => {
+      return res.data.comment;
+    })
+    .catch((err) => {
+      console.error("Error posting comment: ", err);
+      throw err;
+    });
+};
