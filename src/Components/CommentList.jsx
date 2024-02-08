@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "./api";
 import "./CommentList.css";
 
-export default function CommentList({ article_id }) {
+export default function CommentList({ article_id, isCommentPosted }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -20,7 +20,7 @@ export default function CommentList({ article_id }) {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [article_id]);
+  }, [article_id, isCommentPosted]);
 
   if (isLoading) {
     return <div>Loading comments...</div>;
@@ -32,12 +32,18 @@ export default function CommentList({ article_id }) {
 
   return (
     <div>
-      <ul className="comment-list">
+      <ul className="comment-list" key="comment-list">
         {comments &&
           comments.map((comment) => {
             return (
               <li key={comment.comment_id} className="comment-item">
-                {comment.body}
+                <div className="comment-header">
+                  <span className="comment-author">{comment.author}</span>
+                  <span className="comment-date">
+                    {new Date(comment.created_at).toLocaleString()}
+                  </span>
+                </div>
+                <p className="comment-body">{comment.body}</p>
               </li>
             );
           })}

@@ -1,9 +1,10 @@
 .article-card {
-    border: 1px solid #ccc;
+    border: 1px solid #ebe9e9;
     border-radius: 1em;
     padding: 2vh;
-    margin: 1em;
-    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    margin: 1.5em;
+    box-shadow: 0.25em 0.25em 0.5em #55cab7d5;
+    background-color: whitesmoke;
 }
 
 .article-image {

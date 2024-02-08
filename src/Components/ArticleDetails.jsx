@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, voteArticle } from "./api";
+import { getArticleById, voteArticle, postComment } from "./api";
 import ArticleCard from "./ArticleCard";
 import CommentList from "./CommentList";
 import "./ArticleDetails.css";
@@ -11,6 +11,9 @@ export default function ArticleDetails() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [voteError, setVoteError] = useState(null);
+  const [comment, setComment] = useState("");
+  const [commentError, setCommentError] = useState(null);
+  const [isCommentPosted, setIsCommentPosted] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,10 +40,59 @@ export default function ArticleDetails() {
       console.error("Error voting on article: ", err);
       setArticle((currentArticle) => ({
         ...currentArticle,
-        votes: currentArticle - vote,
+        votes: currentArticle.votes - vote,
       }));
       setVoteError("Something went wrong with voting, please try again");
     });
+  };
+
+  const handleSubmitCommment = () => {
+    setCommentError(null);
+
+    if (comment.length === 0) {
+      setCommentError("Please enter a comment...");
+      return;
+    }
+
+    const newComment = {
+      username: "grumpy19",
+      body: comment,
+      created_at: new Date().toISOString(),
+    };
+
+    setArticle((currentArticle) => ({
+      ...currentArticle,
+      comments: currentArticle.comments
+        ? [...currentArticle.comments, newComment]
+        : [newComment],
+    }));
+
+    postComment(article_id, newComment.username, comment)
+      .then(() => {
+        setArticle((currentArticle) => ({
+          ...currentArticle,
+          comments: currentArticle.comments
+            ? [...currentArticle.comments, newComment]
+            : [newComment],
+        }));
+        setIsCommentPosted(true);
+
+        setComment("");
+        setTimeout(() => {
+          setIsCommentPosted(false);
+        }, 3000);
+      })
+      .catch((err) => {
+        console.error("Error posting comment: ", err);
+
+        setArticle((currentArticle) => ({
+          ...currentArticle,
+          comments: currentArticle.comments
+            ? currentArticle.comments.slice(0, -1)
+            : [],
+        }));
+        setCommentError("Failed to publish comment. Please try again.");
+      });
   };
 
   if (!article) {
@@ -69,14 +121,40 @@ export default function ArticleDetails() {
             </button>
           </div>
 
-          <span>Votes ({article.votes})</span>
+          <span>Votes: {article.votes}</span>
           <div className="comment-form-container">
-            <form className="comment-form">
-              <textarea placeholder="What are your thoughts..."></textarea>
+            <form
+              className="comment-form"
+              onSubmit={(event) => {
+                event.preventDefault();
+                handleSubmitCommment();
+              }}
+            >
+              <textarea
+                id="comment-textarea"
+                placeholder="What are your thoughts..."
+                value={comment}
+                onChange={(event) => setComment(event.target.value)}
+                required
+              ></textarea>
+
+              {commentError && <div className="error">{commentError}</div>}
+              {isCommentPosted && (
+                <div className="success-posted-comment">
+                  Comment posted succesfully!
+                </div>
+              )}
+              {!isCommentPosted && (
+                <div className="success-posted-comment hidden">Placeholder</div>
+              )}
               <button type="submit">Post Comment</button>
             </form>
           </div>
-          <CommentList article_id={article_id} />
+          <CommentList
+            key={comment.comment_id}
+            article_id={article_id}
+            isCommentPosted={isCommentPosted}
+          />
         </>
       )}
     </div>
