@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { sortArticles } from "./utils";
 import { getArticles } from "./api";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import "./ArticleList.css";
 
@@ -8,13 +9,28 @@ export default function ArticleList({ topic }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [sortOption, setSortOption] = useState("date");
+  const [sortOrder, setSortOrder] = useState("desc");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setIsLoading(true);
 
+    const sortOptionFromUrl = searchParams.get("sort_by");
+    const sortOrderFromUrl = searchParams.get("order");
+
     getArticles(topic)
       .then((articlesData) => {
-        setArticles(articlesData);
+        if (sortOptionFromUrl && sortOrderFromUrl) {
+          const sortedArticles = sortArticles(
+            articlesData,
+            sortOptionFromUrl,
+            sortOrderFromUrl
+          );
+          setArticles(sortedArticles);
+        } else {
+          setArticles(articlesData);
+        }
         setIsLoading(false);
       })
       .catch((err) => {
@@ -22,7 +38,27 @@ export default function ArticleList({ topic }) {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [topic]);
+  }, [topic, searchParams]);
+
+  const handleSortChange = (event) => {
+    const selectedOption = event.target.value;
+    setSortOption(selectedOption);
+
+    const sortedArticles = sortArticles(articles, selectedOption, sortOrder);
+    setArticles(sortedArticles);
+
+    setSearchParams({ sort_by: selectedOption, order: sortOrder });
+  };
+
+  const toggleOrder = () => {
+    const newOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newOrder);
+
+    const sortedArticles = sortArticles(articles, sortOption, newOrder);
+    setArticles(sortedArticles);
+
+    setSearchParams({ sort_by: sortOption, order: newOrder });
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -33,7 +69,17 @@ export default function ArticleList({ topic }) {
   }
 
   return (
-    <div>
+    <section className="main-section">
+      <div className="sorting-dropdown">
+        <select value={sortOption} onChange={handleSortChange}>
+          <option value="date">Sort by Date</option>
+          <option value="comment_count">Sort by Comment Count</option>
+          <option value="votes">Sort by Votes</option>
+        </select>
+        <button onClick={toggleOrder} className="order-button">
+          {sortOrder === "asc" ? "Ascending" : "Descending"}
+        </button>
+      </div>
       <ul>
         {articles.map((article) => {
           return (
@@ -45,6 +91,6 @@ export default function ArticleList({ topic }) {
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }

@@ -7,14 +7,13 @@ export default function ArticleCard({ article }) {
       {article.article_img_url && (
         <img
           src={article.article_img_url}
-          alt={article.title}
+          alt={`Image related to ${article.topic}`}
           className="article-image"
         />
       )}
 
       <p>Author: {article.author}</p>
       <p>Published: {new Date(article.created_at).toLocaleDateString()}</p>
-      <p>Comments: {article.comment_count}</p>
     </div>
   );
 }

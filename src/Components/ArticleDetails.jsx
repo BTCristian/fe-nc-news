@@ -112,6 +112,7 @@ export default function ArticleDetails() {
       {article && (
         <>
           <ArticleCard article={article} />
+
           <div className="vote-buttons">
             <button className="vote-button" onClick={() => handleVote(1)}>
               👍
@@ -149,6 +150,9 @@ export default function ArticleDetails() {
               )}
               <button type="submit">Post Comment</button>
             </form>
+          </div>
+          <div className="comments_count">
+            Comments: {article.comment_count}
           </div>
           <CommentList
             key={comment.comment_id}
