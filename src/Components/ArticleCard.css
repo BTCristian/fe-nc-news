@@ -24,3 +24,6 @@
     margin-bottom: 0.5em;
 }
 
+.article-card:hover {
+    box-shadow: 0.25em 0.25em 0.5em #f30101d5;
+}
