@@ -3,9 +3,12 @@ const ncNewsApi = axios.create({
   baseURL: "https://nc-news-cristian.onrender.com/",
 });
 
-export const getArticles = () => {
+export const getArticles = (topic) => {
+  let url = "/api/articles";
+  const params = topic ? { topic: topic } : {};
+
   return ncNewsApi
-    .get("/api/articles")
+    .get(url, { params })
     .then((res) => {
       return res.data;
     })
@@ -20,6 +23,18 @@ export const getArticleById = (article_id) => {
     .get(`/api/articles/${article_id}`)
     .then((res) => {
       return res.data;
+    })
+    .catch((err) => {
+      console.error(err);
+      throw err;
+    });
+};
+
+export const getTopics = () => {
+  return ncNewsApi
+    .get("/api/topics")
+    .then((res) => {
+      return res.data.topic;
     })
     .catch((err) => {
       console.error(err);
