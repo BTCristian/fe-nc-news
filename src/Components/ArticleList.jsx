@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import "./ArticleList.css";
 
-export default function ArticleList() {
+export default function ArticleList({ topic }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -12,7 +12,7 @@ export default function ArticleList() {
   useEffect(() => {
     setIsLoading(true);
 
-    getArticles()
+    getArticles(topic)
       .then((articlesData) => {
         setArticles(articlesData);
         setIsLoading(false);
@@ -22,7 +22,7 @@ export default function ArticleList() {
         setIsLoading(false);
         setIsError(true);
       });
-  }, []);
+  }, [topic]);
 
   if (isLoading) {
     return <div>Loading...</div>;

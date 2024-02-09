@@ -1,0 +1,31 @@
+.topics {
+  margin-bottom: 20px;
+}
+
+.topics ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.topics li {
+  margin-bottom: 5px;
+}
+
+.topics li .topic-link {
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 20px; 
+  display: inline-block;
+  width: 200px;
+  text-align: center; 
+}
+
+.topics li .topic-link:hover {
+  background-color: #f0f0f0;
+}
+
+.topics li .topic-link.active {
+  background-color: #01c7ad; /* Change to your preferred active color */
+  color: #eb1b24;
+}
