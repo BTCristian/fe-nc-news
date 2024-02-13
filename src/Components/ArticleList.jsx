@@ -61,11 +61,27 @@ export default function ArticleList({ topic }) {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <p>Loading...</p>
+        <img
+          src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1259.gif"
+          alt="loading animation"
+        />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error loading articles. Please try again later</div>;
+    return (
+      <div>
+        <p>Error loading articles. Please try again later</p>
+        <img
+          src="https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg"
+          alt="404 error image"
+        />
+      </div>
+    );
   }
 
   return (

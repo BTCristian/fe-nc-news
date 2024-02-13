@@ -2,6 +2,10 @@
   margin-bottom: 20px;
 }
 
+.topics h2 {
+  color: #eb1b24;
+}
+
 .topics ul {
   list-style-type: none;
   padding: 0;

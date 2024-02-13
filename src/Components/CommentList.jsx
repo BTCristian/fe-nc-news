@@ -53,11 +53,27 @@ export default function CommentList({ article_id, isCommentPosted }) {
   };
 
   if (isLoading) {
-    return <div>Loading comments...</div>;
+    return (
+      <div>
+        <p>Loading comments...</p>
+        <img
+          src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1259.gif"
+          alt="loading animation"
+        />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error loading comments. Please try again later</div>;
+    return (
+      <div>
+        <p>Error loading comments. Please try again later</p>
+        <img
+          src="https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg"
+          alt="404 error image"
+        />
+      </div>
+    );
   }
 
   return (

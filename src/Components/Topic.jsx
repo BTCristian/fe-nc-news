@@ -5,9 +5,11 @@ import ArticleList from "./ArticleList";
 import "./Topic.css";
 
 export default function Topic() {
-  const { topic: initialTopic } = useParams();
+  const { topic } = useParams();
+  const initialTopic = topic !== ":topic" ? topic : "all";
+  console.log("Initial topic: ", initialTopic);
   const [topics, setTopics] = useState([]);
-  const [currentTopic, setCurrentTopic] = useState(initialTopic || "");
+  const [currentTopic, setCurrentTopic] = useState(initialTopic);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -27,20 +29,8 @@ export default function Topic() {
         setIsError(true);
       });
 
-    if (currentTopic) {
-      setIsLoading(true);
-      getArticles(currentTopic)
-        .then((articlesData) => {
-          setArticles(articlesData);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error loading articles: ", err);
-          setIsLoading(false);
-          setIsError(true);
-        });
-    } else {
-      setIsLoading(true);
+    setIsLoading(true);
+    if (initialTopic === "all") {
       getArticles()
         .then((articlesData) => {
           setArticles(articlesData);
@@ -51,19 +41,46 @@ export default function Topic() {
           setIsLoading(false);
           setIsError(true);
         });
+    } else {
+      getArticles(initialTopic)
+        .then((articlesData) => {
+          setArticles(articlesData);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.error("Error loading articles: ", err);
+          setIsLoading(false);
+          setIsError(true);
+        });
     }
-  }, [currentTopic]);
+  }, [initialTopic, currentTopic]);
 
   const handleTopicChange = (selectedTopic) => {
     setCurrentTopic(selectedTopic);
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <p>Loading...</p>
+        <img
+          src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1259.gif"
+          alt="loading animation"
+        />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error loading articles. Please try again later</div>;
+    return (
+      <div>
+        <p>Error loading articles. Please try again later</p>
+        <img
+          src="https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg"
+          alt="404 error image"
+        />
+      </div>
+    );
   }
 
   return (
@@ -84,7 +101,7 @@ export default function Topic() {
           </li>
         ))}
       </ul>
-      <ArticleList topic={currentTopic} />
+      <ArticleList articles={articles} />
     </div>
   );
 }

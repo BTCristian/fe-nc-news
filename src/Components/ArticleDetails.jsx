@@ -95,16 +95,28 @@ export default function ArticleDetails() {
       });
   };
 
-  if (!article) {
-    return <div>Loading...</div>;
-  }
-
   if (isLoading) {
-    return <div>Loading article details...</div>;
+    return (
+      <div>
+        <p>Loading article details...</p>
+        <img
+          src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1259.gif"
+          alt="loading animation"
+        />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error loading article details. Please try again later</div>;
+    return (
+      <div>
+        <h2>Error loading article details. Please try again later</h2>
+        <img
+          src="https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg"
+          alt="404 error image"
+        />
+      </div>
+    );
   }
 
   return (

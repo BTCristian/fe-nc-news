@@ -9,7 +9,7 @@ export default function Navbar() {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <Link to="/topics" className="nav-link">
+          <Link to="/topics/:topic" className="nav-link">
             Topics
           </Link>
         </li>
