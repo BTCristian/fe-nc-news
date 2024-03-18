@@ -95,9 +95,9 @@ export default function ArticleManager() {
     <main>
       <div className="sortnavbar">
         <div className="directionWrapper">
-          <h3>Show articles:</h3>
+          <h3>Order by...</h3>
           <div className="directionInputsWrapper">
-            <label htmlFor="asc">From new to old</label>
+            <label htmlFor="asc">Newest</label>
             <input
               className="radio"
               type="radio"
@@ -109,7 +109,7 @@ export default function ArticleManager() {
             />
 
             <label className="labelDirection" htmlFor="asc">
-              From old to new
+              Oldest
             </label>
             <input
               className="radio"
