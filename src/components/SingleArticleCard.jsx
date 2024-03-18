@@ -43,11 +43,13 @@ export default function SingleArticleCard({
 
   return (
     <div className="singleArticleCard">
-      <img
-        className="articleImg articleImgSingle"
-        src={article.article_img_url}
-        alt={article.title}
-      />
+      <div>
+        <img
+          className="articleImg articleImgSingle"
+          src={article.article_img_url}
+          alt={article.title}
+        />
+      </div>
 
       <h2 className="singleHeading">{article.title}</h2>
       <div className="createdBlock createdBlock_singleArt">
