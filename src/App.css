@@ -1,14 +1,506 @@
-#root {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+*:before {
+  
+}
+body{
+  height: 100%;
+}
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+.dropdownContent{
+  display: none;
+  position: absolute;
+  background-color: #0cb8a9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  color: #e90013;
+  margin-left: -20px;
+}
+.dropdownContent a{
+  color: #e90013;
+  width: 100%;
+}
+.dropdownContent a:hover{
+  
+  background-color: #06eedb;
+  border-radius: 35%;
+}
+.dropdown:hover .dropdownContent{
+  display: block;
+}
+/* NAV */
+nav{
+  width: 100%;
+  height: 70px;
+  padding: 15px;
+  line-height: 40px;
+  background-color: #0cb8a9;
+  color: #e90013;
+  font-weight: bold;
+}
+nav ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  cursor:default;
+}
+.leftbar{
+display: flex;
+}
+.leftbar h1 {
+  font-size: 1.5rem;
+}
+.linkItem{
+  color: #e90013;
+  margin-left: 30px;
+  
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.linkItem:hover,
+.linkItem.active {
+    color: #06eedb;
+}
+
+nav li{
+  font-size: 18px;
+}
+.topicLink{
+  display: block;
+  padding-bottom: 10px;
+  text-decoration: none;
+  text-transform: capitalize;
+  text-align: center;
+}
+/* user */
+
+
+/* HEADER */
+header{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+}
+header h1{
+  text-align: center;
+  font-size: 2rem;
+  color:  #e90013;
+}
+.subTitle{
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.3rem;
+}
+
+
+
+/* Articles Card */
+.allArticles{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2.4rem;
+}
+.articleCard{
+  border: none;
+  max-width: 300px;
+  max-height: 690px;
+  min-height: 330px;
+  display:flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  border-radius: 15px;
+  box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+  background: #d9d9d9;
+  position: relative;
+
+}
+.articleImg{
+  
+  width: 100%;
+  height: 100%;
+  max-height: 55%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.linkTitle, .articleTopicLink{
+  text-decoration: none;
+  cursor: pointer;
+
+}
+.linkTitle{
+  color:#12343b;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
+}
+.createdBlock{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+}
+.linkAuthor{
+  text-decoration: none;
+  color: #000;
+}
+.spanNameAuthor, .articleTopicLink{
+  color: #12343b;
+}
+.likeBtnShow{
+  max-width: 15px;
+  margin-right: 0.3rem;
+}
+.articleFooter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  padding-left: 15px;
+padding-right: 15px;
+position: absolute;
+bottom: 15px;
+width: 100%;
+left: 5px;
+}
+.likesWrapper{
+  display: flex;
+}
+
+/* IsLoading and IsError */
+.isLoading{
+  display:flex;
+  justify-content: center;
+}
+
+.isError{
+  display:flex;
+  justify-content: center;
+}
+
+.footer { 
+  padding: 1em;
+  background-color:#0cb8a9;
+  display: flex;
+  justify-content: center;
+  color:  #e90013;
+  font-weight: bold;
+}
+
+/* SORT BY NAV */
+.sortnavbar{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-bottom: 1.2rem;
+  padding: 0 3rem;
+}
+.directionInputsWrapper{
+ display:flex;
+ align-items: center;
+}
+.sortnavbar h3{
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+}
+.sortnavbar label{
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+.labelDirection{
+  margin-left: 1.3rem;
+}
+.radio{
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background-color: #fff;
+  color:#000;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 0.15rem solid #12343b;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+.radio::before{
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  transform: scale(0);
+  transform: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem rgb(220,20,60);
+}
+.radio:checked::before{
+  transform: scale(1);
+}
+.sortByWrapper .sortByItem{
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+}
+#list-sorting{
+  border-radius: 10px;
+  border:none;
+  padding:5px;
+  cursor: pointer;
+  outline: none;
+  box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+}
+
+.loading{
+  text-align: center;
+  font-size: 18px;
+}
+.errorPage{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.notfoundImg{
+  max-width: 60%;
+ 
+}
+.badRequest{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: auto;
-  padding: 1rem;
-  text-align: center;
-}
-
-.app-container {
   width: 100%;
 }
+.badRequest h3{
+  font-size: 1.4rem;
+  color:rgb(178,34,34);
+}
+.badReqImg{
+  max-width:50%;
+  max-height: 50%;
+  margin-top: -30px; 
+}
+.commentsLikesWrapper{
+  display: flex;
+}
+.commentsLikesWrapper p{
+margin-right: 1.3rem;
+}
 
+
+@media only screen and (max-width: 600px){
+  .linkItem{
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  header{
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  header h1{
+    font-size: 1.6rem;
+  }
+  .subTitle{
+    font-size: 1rem;
+  }
+  .sortnavbar{
+    margin-top: 2rem;
+    flex-direction: column;
+  }
+  .directionWrapper h3{
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+  }
+  .directionInputsWrapper{
+    justify-content: space-between;
+  }
+  .sortnavbar label {
+    margin-right: 0;
+    font-size: 1.06rem;
+  }
+  .radio{
+    margin-left: -80px;
+  }
+  .sortByWrapper{
+    margin-top: 1rem;
+  }
+  .sortByWrapper .sortByItem{
+    font-size: 1rem;
+  }
+  #list-sorting{
+    line-height: 1.2rem;
+  }
+  .allArticles{
+    padding: 1.3rem;
+    justify-content: center;
+  }
+  .articleCard {
+    max-width: 200px;
+    max-height: 700px;
+    min-height: 300px;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    margin-right: 1.4rem;
+  }
+  .linkTitle {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+  .linkTitle h2{
+    font-size: 0.9rem;
+  }
+  .createdBlock {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 8px 3px;
+  }
+  .linkAuthor{
+    font-size: 0.8rem;
+  }
+  .spanNameAuthor, .articleTopicLink {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  .createdDate{
+    margin-top: 3px;
+    font-size: 12px;
+    text-align: end;
+  }
+  .articleFooter {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding-left: 8px;
+    padding-right: 15px;
+    bottom: 15px;
+    width: 100%;
+    left: 5px;
+}
+.articleTopicLink {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+  .commentsLikesWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .commentsLikesWrapper p{
+    font-size: 0.8rem;
+    margin-right: 0.8rem;
+  }
+  .likesWrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .commentsLikesWrapper p {
+    margin-right: 1rem;
+    font-size: 0.8rem;
+}
+
+}
+
+@media only screen and (max-width: 460px){
+  nav {
+    height: 62px;
+    padding: 10px;
+    line-height: 40px;
+  }
+  .linkItem {
+    margin-left: 14px;
+    font-size: 14px;
+    text-align: left;
+  }
+  .dropdownContent a {
+    font-size: 0.9rem;
+  }
+  .dropdown:hover .dropdownContent {
+    display: block;
+    padding: 5px;
+  }
+  .userActive {
+    font-size: 14px;
+  }
+  header{
+    margin-top: 1rem;
+  }
+  header h1 {
+    font-size: 1.4rem;
+  }
+  .subTitle{
+    margin-top: 10px;
+  }
+  .sortnavbar {
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+  }
+  .directionWrapper{
+    font-size: 13px;
+  }
+  .directionWrapper h3{
+    font-size: 0.9rem;
+  }
+  .directionInputsWrapper label{
+    font-size: 0.9rem;
+  }
+  .radio {
+    margin-left: -45px;
+  }
+  .sortByWrapper .sortByItem{
+    font-size: 0.9rem;
+  }
+  #list-sorting {
+    line-height: 1rem;
+  }
+}
+
+@media only screen and (max-width: 300px){
+    nav{
+      padding: 5px;
+    }
+    .linkItem{
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .dropdown{
+      margin: auto;
+    }
+    .userActive{
+      font-size: 12px;
+    }
+    .directionInputsWrapper label {
+      font-size: 0.7rem;
+    }
+    .radio{
+      margin-left: -10px;
+      width: 1rem;
+      height: 1rem;
+    }
+    .radio::before {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+  
+}
+@media only screen and (max-width: 1200px){
+  .allArticles{
+    padding: 1.2rem;
+  }
+  .articleCard{
+    max-width: 290px;
+  }
+}

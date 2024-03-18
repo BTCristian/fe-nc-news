@@ -1,0 +1,121 @@
+.newArtcileSection{
+    width: 100%;
+    padding: 1%  2% 0;
+}
+.newArtcileSection h2{
+   text-align: center;
+   font-size: 1.3rem;
+   margin-bottom: 1.2rem;
+}
+.newArticleForm{
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    padding: 2rem;
+    border-radius: 15px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    letter-spacing: -0.2px;
+    background-color: rgba(	45,	84,	94, 0.5);
+    box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+
+}
+.newArticleLabel  {
+    margin-top: 1.5rem;
+}
+.newArticleForm input{
+    width: 80%;
+    height: 1.7rem;
+    padding: 17px;
+    margin-top: 0.8rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    text-shadow: 1px 1px 0 #fff;
+    box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+
+}
+.newArticleForm input:focus #textAreaArticle:focus{
+    box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+}
+#textAreaArticle{
+    width: 90%;
+    padding: 17px;
+    margin-top: 0.8rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    text-shadow: 1px 1px 0 #fff;
+    box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+}
+.newArticleSelect{
+    margin-left: 1.3rem;
+    border-radius: 10px;
+    border:none;
+    padding:5px;
+    cursor: pointer;
+    outline: none;
+    box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+}
+.postArticleBtn{
+    margin-top: 19px;
+    margin-bottom: 10px;
+  border-radius: 15px;
+  border: none;
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #fff,  5px 5px 20px #BABECC;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+}
+.postArticleBtn:hover {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #BABECC;
+  }
+  .postArticleBtn:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+  }
+  .item-listed{
+    font-size: 1.7rem;
+    text-align: center;
+    color: 	rgb(46,139,87);
+    margin-top: 4rem;
+  }
+
+  @media only screen and (max-width: 800px){
+    .newArticleForm{
+        width: 70%;
+    }
+  }
+  @media only screen and (max-width: 545px){
+    .newArticleForm{
+        width: 90%;
+    }
+    .newArticleLabel {
+        margin-top: 1rem;
+    }
+    .newArticleForm input {
+        width: 94%;
+        margin-top: 0.4rem;
+    }
+    #textAreaArticle {
+        width: 94%;
+    }
+  }
+
+  @media only screen and (max-width: 445px){
+    .newArtcileSection h2{
+        font-size: 1.1rem;
+    }
+    .newArticleForm {
+        padding: 0.9rem;
+        padding-bottom: 1.5rem;
+    }
+    .newArticleSelect{
+        font-size: 0.9rem;
+    }
+  }
+  
