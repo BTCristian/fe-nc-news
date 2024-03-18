@@ -16,7 +16,6 @@ export default function Nav({ topicsList, setTopicsList, activeUserName }) {
     <nav>
       <ul>
         <div className="leftbar">
-          <h1 href="">NC News</h1>
           <li>
             <Link className="linkItem" to="/">
               Home
