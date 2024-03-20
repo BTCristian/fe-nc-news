@@ -90,9 +90,9 @@ export default function NewArticle({ topicsList, activeUserName }) {
             id="imgUrl"
             placeholder="https://..."
           />
-          <label className="newArticleLabel" htmlFor="textAreaArticle">
+{/*           <label className="newArticleLabel" htmlFor="textAreaArticle">
             Article content:
-          </label>
+          </label> */}
           <textarea
             name="articleBody"
             value={newArticleBody}
