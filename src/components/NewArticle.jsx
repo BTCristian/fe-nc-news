@@ -47,9 +47,9 @@ export default function NewArticle({ topicsList, activeUserName }) {
         </div>
       ) : (
         <form className="newArticleForm" onSubmit={postNewArticleHandler}>
-{/*           <label className="newArticleLabel" htmlFor="title">
-            Please add title of the article:*
-          </label> */}
+          <label className="newArticleLabel" htmlFor="title">
+            
+          </label>
           <input
             className="inputAddArticle"
             value={newTitle}
