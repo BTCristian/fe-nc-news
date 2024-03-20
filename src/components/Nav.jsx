@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function Nav({ topicsList, setTopicsList, activeUserName }) {
   useEffect(() => {
     axios
-      .get("https://nc-news-24h6.onrender.com/api/topics")
+      .get("https://nc-news-cristian.onrender.com/api/topics")
       .then((response) => {
         setTopicsList(response.data.topics);
       });
