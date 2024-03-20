@@ -64,10 +64,10 @@ display: flex;
 }
 .linkItem{
   color: #e90013;
-  margin-left: 30px;
+  margin-left: 20px;
   
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .linkItem:hover,
