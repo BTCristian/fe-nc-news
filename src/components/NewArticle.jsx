@@ -47,16 +47,16 @@ export default function NewArticle({ topicsList, activeUserName }) {
         </div>
       ) : (
         <form className="newArticleForm" onSubmit={postNewArticleHandler}>
-          <label className="newArticleLabel" htmlFor="title">
+{/*           <label className="newArticleLabel" htmlFor="title">
             Please add title of the article:*
-          </label>
+          </label> */}
           <input
             className="inputAddArticle"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             type="text"
             id="title"
-            placeholder="My new article..."
+            placeholder="Title of your article..."
             required
           />
           <label className="newArticleLabel" htmlFor="">
@@ -88,10 +88,10 @@ export default function NewArticle({ topicsList, activeUserName }) {
             onChange={(e) => setNewArticleImgUrl(e.target.value)}
             type="text"
             id="imgUrl"
-            placeholder="https://"
+            placeholder="https://..."
           />
           <label className="newArticleLabel" htmlFor="textAreaArticle">
-            Please type your article:
+            Article content:
           </label>
           <textarea
             name="articleBody"
@@ -100,7 +100,7 @@ export default function NewArticle({ topicsList, activeUserName }) {
             id="textAreaArticle"
             cols="30"
             rows="10"
-            placeholder="This article is about..."
+            placeholder="Your article content..."
             required
           ></textarea>
           <button className="postArticleBtn">Post</button>
