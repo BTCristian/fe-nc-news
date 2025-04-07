@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function Nav({ topicsList, setTopicsList, activeUserName }) {
   useEffect(() => {
     axios
-      .get("https://nc-news-24h6.onrender.com/api/topics")
+      .get("https://nc-news-cristian.onrender.com/api/topics")
       .then((response) => {
         setTopicsList(response.data.topics);
       });
@@ -16,10 +16,10 @@ export default function Nav({ topicsList, setTopicsList, activeUserName }) {
     <nav>
       <ul>
         <div className="leftbar">
-          <h1 href="">NC News</h1>
+{/*           <h1 href="">NC News</h1> */}
           <li>
             <Link className="linkItem" to="/">
-              Home
+              NC News
             </Link>
           </li>
           <div className="dropdown">

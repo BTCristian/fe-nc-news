@@ -10,6 +10,7 @@
 }
 body {
   height: 100%;
+  //background-image: url('https://i.ibb.co/YNZp5Kf/pexels-scott-webb-3255761.jpg') ;
 }
 .dropdown {
   position: relative;
@@ -62,10 +63,15 @@ nav ul {
 }
 .linkItem {
   color: #e90013;
+<<<<<<< HEAD
   margin-left: 30px;
 
+=======
+  margin-left: 20px;
+  
+>>>>>>> 35c29b29207becd7df710e3af93ec771b0650ed1
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .linkItem:hover,
